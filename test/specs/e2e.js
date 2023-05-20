@@ -7,9 +7,12 @@ describe('Test Suite', async()=>{
         await $('#username').setValue("rahulshettyacademy");
         await $('#password').setValue("123learning");
         await $('#signInBtn').click();
-        await browser.pause(3000);
+        await browser.waitUntil(async() => await $('#signInBtn').getAttribute('value') === 'Sign In', {
+            timeout: 5000,
+            timeoutMsg: 'expected text to be different after 5s'
+        })
         console.log(await $('.alert-danger').getText())
-        // await browser.pause(10000);
+       
 
 
     })
