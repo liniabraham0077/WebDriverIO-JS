@@ -9,3 +9,5 @@
 3. Command to run the tests specified in the specs array of wdio.conf.js file
 
 `npx wdio run wdio.conf.js`
+
+4. add `x` infront of `it` to skip running a test in the `describe block`
