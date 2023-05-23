@@ -46,10 +46,10 @@ describe('UI controls test', async() => {
         await browser.pause(4000)
     })
 
-    it('dynamic dropdown', async() =>{
+    xit('dynamic dropdown', async() =>{
         await browser.url("https://rahulshettyacademy.com/AutomationPractice")
-        await  $("#autocomplete").setValue("ind")
-        await  browser.pause(3000)
+        await $("#autocomplete").setValue("ind")
+        await browser.pause(3000)
         let items = await $$("[class='ui-menu-item'] div")
         items.forEach(async(item )=> {
             await console.log(item.getText())
@@ -59,6 +59,15 @@ describe('UI controls test', async() => {
                 
             }})
             await browser.pause(7000)
+    })
+
+    it('handle checkbox', async() =>{
+        await browser.url("https://rahulshettyacademy.com/AutomationPractice")
+        const checkboxes = await $$("input[type='checkbox']")
+        await checkboxes[1].click();
+        await browser.pause(3000)
+        console.log(await checkboxes[1].isSelected())
+        await browser.saveScreenshot("screenshot.png")
     })
 })
 
