@@ -11,3 +11,6 @@
 `npx wdio run wdio.conf.js`
 
 4. add `x` infront of `it` to skip running a test in the `describe block`
+
+5. command to run a specific test
+`npx wdio run wdio.conf.js --spec test/specs/ui-controls.js`
