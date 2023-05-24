@@ -13,18 +13,16 @@ describe('UI controls test', async() => {
         await $("=Top").click()
         await browser.pause(5000)
     })
-
+  
     it('handle tables', async() => {
-        const arr = [1,2,3,4,5]
         await browser.maximizeWindow();
         await browser.url("https://rahulshettyacademy.com/seleniumPractise/#/offers")
         await $('tr th:first-child').click();
         const veggiesColumn =  await $$("tr td:nth-child(1)")
-
         const actualVeggiesList = await Promise.all(await veggiesColumn.map(async veggie => await veggie.getText()))
-        const veggiesList =   actualVeggiesList.slice()
+        const veggiesList = actualVeggiesList.slice()
         //Arrays are pass by reference
-        const expectedVeggiesList =  veggiesList.sort()
+        const expectedVeggiesList = veggiesList.sort()
         expectChai(actualVeggiesList).to.eql(expectedVeggiesList)
     })
 })
