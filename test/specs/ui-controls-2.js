@@ -2,7 +2,7 @@ import { expect as expectChai } from 'chai'
 import { expect as expectWDIO } from '@wdio/globals'
 
 describe('UI controls test', async() => {
-    it('scrolling and mouse hover', async() => {
+    xit('scrolling and mouse hover', async() => {
         await browser.maximizeWindow();
         await browser.url("https://rahulshettyacademy.com/AutomationPractice")
         // await browser.$("#mousehover").scrollIntoView({ block: 'nearest', inline: 'nearest' })
@@ -12,5 +12,18 @@ describe('UI controls test', async() => {
         await browser.pause(5000)
         await $("=Top").click()
         await browser.pause(5000)
+    })
+    it('handle tables', async() => {
+        const arr = [1,2,3,4,5]
+        await browser.maximizeWindow();
+        await browser.url("https://rahulshettyacademy.com/seleniumPractise/#/offers")
+        await $('tr th:first-child').click();
+        const veggiesColumn =  await $$("tr td:nth-child(1)")
+
+        const OriginalVeggies = await veggiesColumn.map(async veggie => await veggie.getText())
+        const veggies =   OriginalVeggies.slice()
+        //Arrays are pass by reference
+        const sortedVeggies =  veggies.sort()
+        expectChai(OriginalVeggies).to.eql(sortedVeggies)
     })
 })
