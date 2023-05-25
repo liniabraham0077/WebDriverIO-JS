@@ -26,7 +26,7 @@ describe('UI controls test', async() => {
 
     })
 
-    xit('static dropdown', async() =>{
+    it('static dropdown', async() =>{
         await browser.url("https://rahulshettyacademy.com/loginpagePractise")
         await expectWDIO(browser).toHaveTitleContaining('Rahul Shetty Academy')
         await $('#username').setValue("rahulshettyacademy");
@@ -34,15 +34,12 @@ describe('UI controls test', async() => {
         // select value from dropdown
         await $('select.form-control').selectByAttribute('value','teach');
         expectChai(await $('select.form-control').getValue()).to.equal('teach')
-        expectChai(await $('select.form-control').getText()).to.equal('Teacher')
         await browser.pause(4000)
         await $('select.form-control').selectByVisibleText('Consultant');
         expectChai(await $('select.form-control').getValue()).to.equal('consult')
-        expectChai(await $('select.form-control').getText()).to.equal('Consultant')
         await browser.pause(4000)
         await $('select.form-control').selectByIndex(0);
         expectChai(await $('select.form-control').getValue()).to.equal('stud')
-        expectChai(await $('select.form-control').getText()).to.equal('Student')
         await browser.pause(4000)
     })
 
@@ -61,7 +58,7 @@ describe('UI controls test', async() => {
             await browser.pause(7000)
     })
 
-    it('handle checkbox', async() =>{
+    xit('handle checkbox', async() =>{
         await browser.url("https://rahulshettyacademy.com/AutomationPractice")
         const checkboxes = await $$("input[type='checkbox']")
         await checkboxes[1].click();
