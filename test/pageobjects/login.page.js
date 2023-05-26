@@ -5,7 +5,7 @@ import Page from './page.js';
 /**
  * sub page containing specific selectors and methods for a specific page
  */
-class LoginPage extends Page {
+export class LoginPage extends Page {
     /**
      * define selectors using getter methods
      */
@@ -17,9 +17,16 @@ class LoginPage extends Page {
         return $('#password');
     }
 
-    get btnSubmit () {
-        return $('button[type="submit"]');
+    get btnSignIn () {
+        return $('#signInBtn');
     }
+
+    get alertDanger () {
+        return $('.alert-danger');
+    }
+
+
+    
 
     /**
      * a method to encapsule automation code to interact with the page
@@ -28,15 +35,8 @@ class LoginPage extends Page {
     async login (username, password) {
         await this.inputUsername.setValue(username);
         await this.inputPassword.setValue(password);
-        await this.btnSubmit.click();
+        await this.btnSignIn.click();
     }
 
-    /**
-     * overwrite specific options to adapt it to page object
-     */
-    open () {
-        return super.open('login');
-    }
+  
 }
-
-export default new LoginPage();

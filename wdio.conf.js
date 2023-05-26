@@ -23,7 +23,7 @@ export const config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/e2e.js'
+        './test/specs/page-object-tests/e2e.js'
     ],
     // Patterns to exclude.
     exclude: [
