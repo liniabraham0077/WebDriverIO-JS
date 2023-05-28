@@ -1,6 +1,7 @@
 describe('Test Suite', async()=>{
-    it('error on entering incorrect password', async()=>{
-        await browser.url("https://rahulshettyacademy.com/loginpagePractise")
+    it('Smoke Test - error on entering incorrect password', async()=>{
+        await browser.maximizeWindow()
+        await browser.url("/loginpagePractise")
         await expect(browser).toHaveTitleContaining('Rahul Shetty Academy')
         await $('#username').setValue("rahulshettyacademy");
         await $('#password').setValue("123learning");
@@ -13,7 +14,8 @@ describe('Test Suite', async()=>{
     })
 
     it('login successfully', async()=>{
-        await browser.url("https://rahulshettyacademy.com/loginpagePractise")
+        await browser.maximizeWindow()
+        await browser.url("/loginpagePractise")
         await expect(browser).toHaveTitleContaining('Rahul Shetty Academy')
         await $('#username').setValue("rahulshettyacademy");
         await $('#password').setValue("learning");

@@ -2,8 +2,9 @@ import { expect as expectChai } from 'chai'
 import { expect as expectWDIO } from '@wdio/globals'
 
 describe('Test Suite', async()=>{
-    it('end to end flow', async()=>{
-            await browser.url("https://rahulshettyacademy.com/loginpagePractise")
+    it('Smoke Test - end to end flow', async()=>{
+            await browser.maximizeWindow()
+            await browser.url("/loginpagePractise")
             await expect(browser).toHaveTitleContaining('Rahul Shetty Academy')
             await $('#username').setValue("rahulshettyacademy");
             await $('#password').setValue("learning");
@@ -56,9 +57,6 @@ describe('Test Suite', async()=>{
             await $("=India").click()
             await $("input[type='submit']").click()
             await expect($(".alert-success")).toHaveTextContaining("Success")
-
-            await browser.pause(10000)
-
        
     })
 

@@ -3,7 +3,8 @@ import { expect as expectWDIO } from '@wdio/globals'
 
 describe('UI controls test', async() => {
 
-    xit('radion button', async() =>{
+    it('radion button', async() =>{
+        await browser.maximizeWindow()
         await browser.url("https://rahulshettyacademy.com/loginpagePractise")
         await expectWDIO(browser).toHaveTitleContaining('Rahul Shetty Academy')
         await $('#username').setValue("rahulshettyacademy");
@@ -27,6 +28,7 @@ describe('UI controls test', async() => {
     })
 
     it('static dropdown', async() =>{
+        await browser.maximizeWindow()
         await browser.url("https://rahulshettyacademy.com/loginpagePractise")
         await expectWDIO(browser).toHaveTitleContaining('Rahul Shetty Academy')
         await $('#username').setValue("rahulshettyacademy");
@@ -34,19 +36,19 @@ describe('UI controls test', async() => {
         // select value from dropdown
         await $('select.form-control').selectByAttribute('value','teach');
         expectChai(await $('select.form-control').getValue()).to.equal('teach')
-        await browser.pause(4000)
+        await browser.pause(2000)
         await $('select.form-control').selectByVisibleText('Consultant');
         expectChai(await $('select.form-control').getValue()).to.equal('consult')
-        await browser.pause(4000)
+        await browser.pause(2000)
         await $('select.form-control').selectByIndex(0);
         expectChai(await $('select.form-control').getValue()).to.equal('stud')
-        await browser.pause(4000)
+        await browser.pause(2000)
     })
 
-    xit('dynamic dropdown', async() =>{
-        await browser.url("https://rahulshettyacademy.com/AutomationPractice")
+    it('dynamic dropdown', async() =>{
+        await browser.maximizeWindow()
+        await browser.url("/AutomationPractice")
         await $("#autocomplete").setValue("ind")
-        await browser.pause(3000)
         let items = await $$("[class='ui-menu-item'] div")
         items.forEach(async(item )=> {
             await console.log(item.getText())
@@ -55,11 +57,11 @@ describe('UI controls test', async() => {
                 await item.click()
                 
             }})
-            await browser.pause(7000)
     })
 
-    xit('handle checkbox', async() =>{
-        await browser.url("https://rahulshettyacademy.com/AutomationPractice")
+    it('handle checkbox', async() =>{
+        await browser.maximizeWindow()
+        await browser.url("/AutomationPractice")
         const checkboxes = await $$("input[type='checkbox']")
         await checkboxes[1].click();
         await browser.pause(3000)
