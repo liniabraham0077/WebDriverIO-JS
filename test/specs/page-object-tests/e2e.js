@@ -12,7 +12,8 @@ describe('page object tests', async() => {
     products.forEach(async({products}) => {
     it('end to end test', async()=>
     {
-        await browser.url("https://rahulshettyacademy.com/loginpagePractise")
+        await browser.maximizeWindow()
+        await browser.url("/loginpagePractise")
         await expect(browser).toHaveTitleContaining('Rahul Shetty Academy')
         await $('#username').setValue("rahulshettyacademy");
         const loginpage = new LoginPage()

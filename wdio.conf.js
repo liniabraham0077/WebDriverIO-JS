@@ -22,8 +22,13 @@ export const config = {
     // then the current working directory is where your `package.json` resides, so `wdio`
     // will be called from there.
     //
+
+    suites: {
+        suite1: ['test/specs/page-object-tests/login.js']
+    },
+       
     specs: [
-        './test/specs/page-object-tests/e2e.js'
+        './test/specs/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -46,6 +51,11 @@ export const config = {
     // from the same test should run tests.
     //
     maxInstances: 10,
+    reporters: [['allure', {
+        outputDir: 'allure-results',
+        // disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
+    }]],
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -53,7 +63,11 @@ export const config = {
     //
     capabilities: [{
         // capabilities for local browser web tests
-        browserName: 'chrome' // or "firefox", "microsoftedge", "safari"
+        browserName: 'chrome',
+         // or "firefox", "microsoftedge", "safari"
+        //  'goog:chromeOptions': {
+        //     args: ['headless', 'disable-gpu']
+        // }
     }],
     //
     // ===================
@@ -86,10 +100,10 @@ export const config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://localhost',
+    baseUrl: 'https://rahulshettyacademy.com',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 25000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -124,7 +138,7 @@ export const config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    // reporters: ['spec'],
 
     
     //
@@ -132,7 +146,7 @@ export const config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 90000
     },
     //
     // =====
@@ -228,8 +242,11 @@ export const config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    afterTest: function(test, context, { error, result, duration, passed, retries }) {
+        if (error) {
+             browser.takeScreenshot();
+        }
+    },
 
 
     /**

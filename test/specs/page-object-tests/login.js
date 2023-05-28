@@ -6,7 +6,8 @@ describe('page object tests',async () => {
     credentials.forEach(  ({username,password})  =>{
     it('login test', async()=>
     {
-        await browser.url("https://rahulshettyacademy.com/loginpagePractise")
+        await browser.maximizeWindow()
+        await browser.url("/loginpagePractise")
         await expect(browser).toHaveTitleContaining('Rahul Shetty Academy')
         await $('#username').setValue("rahulshettyacademy");
         const loginpage = new LoginPage()
