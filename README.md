@@ -28,3 +28,22 @@
 
 10. command to generate allure report using script in package.json
 `npm run generate-allure-report`
+
+11. command to build docker image in ci
+` npm run ci:build`
+` "ci:build": "docker-compose -f docker-compose.ci.yml build"`
+
+
+12. command to spin up selenium hub, chrome and firefox using docker compose
+`docker-compose up -d`
+
+<!-- docker-compose up -d --build --force-recreate
+
+
+docker-compose build -- builds image
+docker-compose up
+
+docker-compose up --exit-code-from wdio-automation-la
+
+docker-compose -f docker-compose.yml build
+docker-compose -f docker-compose.yml up --abort-on-container-exit --exit-code-from node -->
