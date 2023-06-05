@@ -55,23 +55,6 @@ services:
       - "4443:4443"
       - "4444:4444"
 
-  node:
-    container_name: e2e-tests-container
-    build:
-      context: ./
-      dockerfile: ./Dockerfile
-    volumes:
-      - /dev/shm:/dev/shm
-      - ./report:/usr/app/report
-    environment:
-      - RUN_IN_DOCKER_COMPOSE=true
-      - SELENIUM_GRID_HOST=selenium-hub
-    command: ["./bootstrap.sh", "${NODE}"]
-    depends_on:
-      - chrome
-      - firefox
-    
-
   wdio-automation-la:
     image: wdio-automation-la:latest
     container_name: wdio-automation-la
