@@ -64,6 +64,16 @@ export const config = {
     capabilities: [{
         // capabilities for local browser web tests
         browserName: 'chrome',
+        acceptInsecureCerts: true,
+        'goog:chromeOptions': {
+            args: [
+                '--no-sandbox',
+                '--disable-infobars',
+                '--headless',
+                '--disable-gpu',
+                '--window-size=1440,735'
+            ],
+        }
          // or "firefox", "microsoftedge", "safari"
         //  'goog:chromeOptions': {
         //     args: ['headless', 'disable-gpu']

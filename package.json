@@ -12,10 +12,16 @@
     "chai": "^4.3.7",
     "chromedriver": "^113.0.0",
     "deepmerge": "^4.3.1",
-    "wdio-chromedriver-service": "^8.1.1"
+    "wdio-chromedriver-service": "^8.1.1",
+    "wdio-docker-service": "^3.2.1"
   },
   "scripts": {
+    "selenium": "selenium-standalone install && selenium-standalone start",
     "wdio": "wdio run ./wdio.conf.js",
-    "generate-allure-report": "allure generate allure-results  --clean && allure open"
+    "generate-allure-report": "allure generate --clean allure-results && allure open",
+    "wdio:docker": "wdio run ./wdio.docker.conf.js",
+    "ci:build": "docker-compose -f docker-compose.ci.yml build",
+    "ci": "docker-compose -f docker-compose.ci.yml up --force-recreate --renew-anon-volumes --abort-on-container-exit --exit-code-from node"
+
   }
 }
